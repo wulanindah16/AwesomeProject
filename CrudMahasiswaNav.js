@@ -4,11 +4,11 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Profil from './App';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
-import { faUser, faUserGraduate } from '@fortawesome/free-solid-svg-icons'
+import { faCirclePlus, faUserPen, faUserGraduate} from '@fortawesome/free-solid-svg-icons'
 import { WebView } from 'react-native-webview';
-import { faGithub } from '@fortawesome/free-brands-svg-icons';
 import Createdata from './Createdata';
 import Datamahasiswa from './Listdata';
+import Editdata from './Editdata'
 
 function HomeScreen() {
   return (
@@ -22,11 +22,9 @@ function DataMahasiswaScreen() {
 );
 }
 
-function WebScreen() {
+function EditScreen() {
   return (
-    <WebView
-        source={{ uri: 'https://github.com/wulanindah16' }}
-      />
+    <Editdata/>
 );
 }
 
@@ -36,9 +34,9 @@ export default function App() {
   return (
     <NavigationContainer>
       <Tab.Navigator>
-        <Tab.Screen name="Profil" component={HomeScreen} options={{headerShown: false,
+        <Tab.Screen name="Tambah" component={HomeScreen} options={{headerShown: false,
           tabBarIcon: ({ color }) => (
-            < FontAwesomeIcon icon={faUser} color={color} size={20} />
+            < FontAwesomeIcon icon={faCirclePlus} color={color} size={20} />
           )
         }} />
         <Tab.Screen name="Mahasiswa" component={DataMahasiswaScreen} options={{headerShown: false,
@@ -46,9 +44,9 @@ export default function App() {
             < FontAwesomeIcon icon={faUserGraduate} color={color} size={20} />
           )
         }}/>
-        <Tab.Screen name="GitHub" component={WebScreen} options={{headerShown: false,
+        <Tab.Screen name="Edit" component={EditScreen} options={{headerShown: false,
           tabBarIcon: ({ color }) => (
-            < FontAwesomeIcon icon={faGithub} color={color} size={20} />
+            < FontAwesomeIcon icon={faUserPen} color={color} size={20} />
           )
         }}/>
       </Tab.Navigator>
